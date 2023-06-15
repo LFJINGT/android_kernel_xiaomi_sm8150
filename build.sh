@@ -1,6 +1,6 @@
 DATE=$(date +"%Y%m%d")
 VERSION=$(git rev-parse --short HEAD)
-KERNEL_NAME=MarisaKernel-cepheus-"$DATE"
+KERNEL_NAME=Evasi0nKernel-cepheus-"$DATE"
 
 export KERNEL_PATH=$PWD
 export ANYKERNEL_PATH=~/Anykernel3
@@ -29,7 +29,7 @@ make mrproper && git reset --hard HEAD
 
 echo "=========================Build========================="
 make O=out cepheus_defconfig
-make O=out | tee out/kernel.log
+make O=out -j12 | tee out/kernel.log
 
 if [ ! -e $KERNEL_PATH/out/arch/arm64/boot/Image.gz-dtb ]; then
     echo "=======================FAILED!!!======================="
